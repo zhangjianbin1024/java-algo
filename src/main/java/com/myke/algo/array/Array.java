@@ -2,6 +2,9 @@ package com.myke.algo.array;
 
 /**
  * Array
+ * <p>
+ * 1) 数组的插入、删除、按照下标随机访问操作；
+ * 2）数组中的数据是int类型的
  *
  * @Author: zhangjianbin
  * @Date: 2019/11/19 12:57

@@ -2,6 +2,8 @@ package com.myke.algo.array;
 
 /**
  * GenericArray
+ * <p>
+ * 实现接受任意类型的数组
  *
  * @Author: zhangjianbin
  * @Date: 2019/11/20 11:09
