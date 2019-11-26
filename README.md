@@ -7,4 +7,4 @@
 
 ## 链表
 
-- 实现单链表反转 SinglyLinkedList
+- 实现单链表 SinglyLinkedList
