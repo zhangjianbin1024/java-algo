@@ -1,6 +1,8 @@
 package com.myke.algo.array;
 
 /**
+ * 实现一个支持动态扩容的数组
+ * <p>
  * GenericArray
  * <p>
  * 实现接受任意类型的数组
