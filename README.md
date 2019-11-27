@@ -6,5 +6,5 @@
 - 实现一个支持动态扩容的数组 GenericArray
 
 ## 链表
-
+- 单链表    LinkedListAlgo
 - 实现单链表 SinglyLinkedList
