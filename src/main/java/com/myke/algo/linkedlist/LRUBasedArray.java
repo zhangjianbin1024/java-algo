@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * LRUBasedArray
  * <p>
- * 基于数组实现的LRU缓存
+ * 基于数组实现的LRU缓存(最近最少使用策略)
  * 1. 空间复杂度为O(n)
  * 2. 时间复杂度为O(n)
  * 3. 不支持null的缓存
@@ -15,15 +15,17 @@ import java.util.Map;
  * @Date: 2019/11/27 16:23
  */
 public class LRUBasedArray<T> {
-    //左移时不管正负，低位补0
+    //左移时不管正负，低位补0 : 1<<3 = 1000(二进制) = 8(十进制)
     private static final int DEFAULT_CAPACITY = (1 << 3);
 
     private int capacity;
 
+    // 缓存的个数
     private int count;
 
     private T[] value;
 
+    //map 缓存容器: key: 访问的值 value:数组中的索引
     private Map<T, Integer> holder;
 
 
@@ -33,8 +35,10 @@ public class LRUBasedArray<T> {
 
     public LRUBasedArray(int capacity) {
         this.capacity = capacity;
+        //初始化 数组
         value = (T[]) new Object[capacity];
         count = 0;
+        // 初始化一个 map,相当于 缓存的容器
         holder = new HashMap<T, Integer>(capacity);
     }
 
@@ -48,15 +52,17 @@ public class LRUBasedArray<T> {
         if (object == null) {
             throw new IllegalArgumentException("该缓存容器不支持null!");
         }
+        //从map 中获取 值,该值为数据中的索引
         Integer index = holder.get(object);
         if (index == null) {
             if (isFull()) { //缓存满的情况
-                removeAndCache(object);
+                removeAndCache(object);//先移除后缓存
             } else {
+                // 将 值 缓存
                 cache(object, count);
             }
         } else {
-            update(index);
+            update(index); //在存缓存中时,则更新缓存中的索引
         }
     }
 
@@ -67,8 +73,10 @@ public class LRUBasedArray<T> {
      * @param end
      */
     public void update(int end) {
+        //通过索引,获取数组中的值
         T target = value[end];
         rightShift(end);
+        //将 target 存入 数据的头部
         value[0] = target;
         holder.put(target, 0);
     }
@@ -81,8 +89,11 @@ public class LRUBasedArray<T> {
      */
     public void cache(T object, int end) {
         rightShift(end);
+        //要缓存的值,存入 数组的头部
         value[0] = object;
+        //值存入缓存
         holder.put(object, 0);
+        //记录缓存中的个数
         count++;
     }
 
@@ -92,7 +103,9 @@ public class LRUBasedArray<T> {
      * @param object
      */
     public void removeAndCache(T object) {
+        //获取最后一个值
         T key = value[--count];
+        //从缓存中移除 key 值
         holder.remove(key);
         cache(object, count);
     }
@@ -105,6 +118,7 @@ public class LRUBasedArray<T> {
     private void rightShift(int end) {
         for (int i = end - 1; i >= 0; i--) {
             value[i + 1] = value[i];
+            //将值的索引 存入 缓存中
             holder.put(value[i], i + 1);
         }
     }
@@ -118,6 +132,7 @@ public class LRUBasedArray<T> {
     }
 
     public boolean isFull() {
+        // true 说明 缓存容量达到了上限
         return count == capacity;
     }
 

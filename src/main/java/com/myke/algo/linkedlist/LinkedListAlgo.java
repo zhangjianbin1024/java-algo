@@ -90,7 +90,7 @@ public class LinkedListAlgo {
             //一次走一步
             slow = slow.next;
 
-            if (slow == fast) {
+            if (slow == fast) { //慢指针与快指针相同，则说明有环
                 return true;
             }
         }
