@@ -35,4 +35,4 @@
 - SampleBrowser 
     - 使用前后栈实现浏览器的前进后退     
 - StackCalculateExpression
-    - 通过栈求 整数表达式求值           
+    - 通过栈解析 四则运算表达式        
