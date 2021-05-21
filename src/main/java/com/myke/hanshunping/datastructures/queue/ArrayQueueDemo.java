@@ -2,6 +2,9 @@ package com.myke.hanshunping.datastructures.queue;
 
 import java.util.Scanner;
 
+/**
+ * 通过数组实现单向的队列
+ */
 public class ArrayQueueDemo {
 
     public static void main(String[] args) {
@@ -24,7 +27,7 @@ public class ArrayQueueDemo {
                     queue.showQueue();
                     break;
                 case 'a':
-                    System.out.println("输出一个数");
+                    System.out.println("输入一个数");
                     int value = scanner.nextInt();
                     queue.addQueue(value);
                     break;
@@ -77,6 +80,7 @@ class ArrayQueue {
 
     // 判断队列是否满
     public boolean isFull() {
+        // rear 从0开始，所以 rear == maxSize - 1 就代表队列是否满了
         return rear == maxSize - 1;
     }
 

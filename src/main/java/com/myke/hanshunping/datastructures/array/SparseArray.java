@@ -1,16 +1,13 @@
 package com.myke.hanshunping.datastructures.array;
 
+/**
+ * ¶şÎ¬Êı¾İ×ªÏ¡ÊèÊı×é
+ */
 public class SparseArray {
 
-    public static void main(String[] args) {
-        // åˆ›å»ºä¸€ä¸ªåŸå§‹çš„äºŒç»´æ•°ç»„ 11 * 11
-        // 0: è¡¨ç¤ºæ²¡æœ‰æ£‹å­ï¼Œ 1 è¡¨ç¤º é»‘å­ 2 è¡¨è“å­
-        int chessArr1[][] = new int[11][11];
-        chessArr1[1][2] = 1;
-        chessArr1[2][3] = 2;
-        chessArr1[4][5] = 2;
-        // è¾“å‡ºåŸå§‹çš„äºŒç»´æ•°ç»„
-        System.out.println("åŸå§‹çš„äºŒç»´æ•°ç»„~~");
+    public static void arrayToSparseArray(int[][] chessArr1) {
+        // Êä³öÔ­Ê¼µÄ¶şÎ¬Êı×é
+        System.out.println("Ô­Ê¼µÄ¶şÎ¬Êı×é~~");
         for (int[] row : chessArr1) {
             for (int data : row) {
                 System.out.printf("%d\t", data);
@@ -18,26 +15,26 @@ public class SparseArray {
             System.out.println();
         }
 
-        // å°†äºŒç»´æ•°ç»„ è½¬ ç¨€ç–æ•°ç»„çš„æ€
-        // 1. å…ˆéå†äºŒç»´æ•°ç»„ å¾—åˆ°é0æ•°æ®çš„ä¸ªæ•°
+        // ½«¶şÎ¬Êı×é ×ª Ï¡ÊèÊı×éµÄË¼
+        // 1. ÏÈ±éÀú¶şÎ¬Êı×é µÃµ½·Ç0Êı¾İµÄ¸öÊı
         int sum = 0;
-        for (int i = 0; i < 11; i++) {
-            for (int j = 0; j < 11; j++) {
+        for (int i = 0; i < chessArr1.length; i++) {
+            for (int j = 0; j < chessArr1[i].length; j++) {
                 if (chessArr1[i][j] != 0) {
                     sum++;
                 }
             }
         }
 
-        // 2. åˆ›å»ºå¯¹åº”çš„ç¨€ç–æ•°ç»„
+        // 2. ´´½¨¶ÔÓ¦µÄÏ¡ÊèÊı×é
         int sparseArr[][] = new int[sum + 1][3];
-        // ç»™ç¨€ç–æ•°ç»„èµ‹å€¼
-        sparseArr[0][0] = 11;
-        sparseArr[0][1] = 11;
+        // ¸øÏ¡ÊèÊı×é¸³Öµ
+        sparseArr[0][0] = chessArr1.length;
+        sparseArr[0][1] = chessArr1[0].length;
         sparseArr[0][2] = sum;
 
-        // éå†äºŒç»´æ•°ç»„ï¼Œå°†é0çš„å€¼å­˜æ”¾åˆ° sparseArrä¸­
-        int count = 0; //count ç”¨äºè®°å½•æ˜¯ç¬¬å‡ ä¸ªé0æ•°æ®
+        // ±éÀú¶şÎ¬Êı×é£¬½«·Ç0µÄÖµ´æ·Åµ½ sparseArrÖĞ
+        int count = 0; //count ÓÃÓÚ¼ÇÂ¼ÊÇµÚ¼¸¸ö·Ç0Êı¾İ
         for (int i = 0; i < 11; i++) {
             for (int j = 0; j < 11; j++) {
                 if (chessArr1[i][j] != 0) {
@@ -49,31 +46,30 @@ public class SparseArray {
             }
         }
 
-        // è¾“å‡ºç¨€ç–æ•°ç»„çš„å½¢å¼
+        // Êä³öÏ¡ÊèÊı×éµÄĞÎÊ½
         System.out.println();
-        System.out.println("å¾—åˆ°ç¨€ç–æ•°ç»„ä¸º~~~~");
+        System.out.println("µÃµ½Ï¡ÊèÊı×éÎª~~~~");
         for (int i = 0; i < sparseArr.length; i++) {
             System.out.printf("%d\t%d\t%d\t\n", sparseArr[i][0], sparseArr[i][1], sparseArr[i][2]);
         }
         System.out.println();
 
-        //å°†ç¨€ç–æ•°ç»„ --ã€‹ æ¢å¤æˆ åŸå§‹çš„äºŒç»´æ•°ç»„
+        //½«Ï¡ÊèÊı×é --¡· »Ö¸´³É Ô­Ê¼µÄ¶şÎ¬Êı×é
 		/*
-		 *  1. å…ˆè¯»å–ç¨€ç–æ•°ç»„çš„ç¬¬ä¸€è¡Œï¼Œæ ¹æ®ç¬¬ä¸€è¡Œçš„æ•°æ®ï¼Œåˆ›å»ºåŸå§‹çš„äºŒç»´æ•°ç»„ï¼Œæ¯”å¦‚ä¸Šé¢çš„  chessArr2 = int [11][11]
-			2. åœ¨è¯»å–ç¨€ç–æ•°ç»„åå‡ è¡Œçš„æ•°æ®ï¼Œå¹¶èµ‹ç»™ åŸå§‹çš„äºŒç»´æ•°ç»„ å³å¯.
+		 *  1. ÏÈ¶ÁÈ¡Ï¡ÊèÊı×éµÄµÚÒ»ĞĞ£¬¸ù¾İµÚÒ»ĞĞµÄÊı¾İ£¬´´½¨Ô­Ê¼µÄ¶şÎ¬Êı×é£¬±ÈÈçÉÏÃæµÄ  chessArr2 = int [11][11]
+			2. ÔÚ¶ÁÈ¡Ï¡ÊèÊı×éºó¼¸ĞĞµÄÊı¾İ£¬²¢¸³¸ø Ô­Ê¼µÄ¶şÎ¬Êı×é ¼´¿É.
 		 */
 
-        //1. å…ˆè¯»å–ç¨€ç–æ•°ç»„çš„ç¬¬ä¸€è¡Œï¼Œæ ¹æ®ç¬¬ä¸€è¡Œçš„æ•°æ®ï¼Œåˆ›å»ºåŸå§‹çš„äºŒç»´æ•°ç»„
+        //1. ÏÈ¶ÁÈ¡Ï¡ÊèÊı×éµÄµÚÒ»ĞĞ£¬¸ù¾İµÚÒ»ĞĞµÄÊı¾İ£¬´´½¨Ô­Ê¼µÄ¶şÎ¬Êı×é
         int chessArr2[][] = new int[sparseArr[0][0]][sparseArr[0][1]];
 
-        //2. åœ¨è¯»å–ç¨€ç–æ•°ç»„åå‡ è¡Œçš„æ•°æ®(ä»ç¬¬äºŒè¡Œå¼€å§‹)ï¼Œå¹¶èµ‹ç»™ åŸå§‹çš„äºŒç»´æ•°ç»„ å³å¯
+        //2. ÔÚ¶ÁÈ¡Ï¡ÊèÊı×éºó¼¸ĞĞµÄÊı¾İ(´ÓµÚ¶şĞĞ¿ªÊ¼)£¬²¢¸³¸ø Ô­Ê¼µÄ¶şÎ¬Êı×é ¼´¿É
         for (int i = 1; i < sparseArr.length; i++) {
             chessArr2[sparseArr[i][0]][sparseArr[i][1]] = sparseArr[i][2];
         }
 
-        // è¾“å‡ºæ¢å¤åçš„äºŒç»´æ•°ç»„
-        System.out.println();
-        System.out.println("æ¢å¤åçš„äºŒç»´æ•°ç»„");
+        System.out.println("»Ö¸´ºóµÄ¶şÎ¬Êı×é");
+        // Êä³ö»Ö¸´ºóµÄ¶şÎ¬Êı×é
         for (int[] row : chessArr2) {
             for (int data : row) {
                 System.out.printf("%d\t", data);
@@ -81,5 +77,4 @@ public class SparseArray {
             System.out.println();
         }
     }
-
 }

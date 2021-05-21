@@ -17,23 +17,23 @@ public class SingleLinkedListDemo {
 
 
         //加入
-        singleLinkedList.add(hero1);
-        singleLinkedList.add(hero4);
-        singleLinkedList.add(hero2);
-        singleLinkedList.add(hero3);
+        //singleLinkedList.add(hero1);
+        //singleLinkedList.add(hero4);
+        //singleLinkedList.add(hero2);
+        //singleLinkedList.add(hero3);
 
         // 测试一下单链表的反转功能
-        System.out.println("原来链表的情况~~");
-        singleLinkedList.list();
+        //System.out.println("原来链表的情况~~");
+        //singleLinkedList.list();
 
 //		System.out.println("反转单链表~~");
 //		reversetList(singleLinkedList.getHead());
 //		singleLinkedList.list();
 
-        System.out.println("测试逆序打印单链表, 没有改变链表的结构~~");
-        reversePrint(singleLinkedList.getHead());
+        //System.out.println("测试逆序打印单链表, 没有改变链表的结构~~");
+        //reversePrint(singleLinkedList.getHead());
 		
-/*		
+
 		//加入按照编号的顺序
 		singleLinkedList.addByOrder(hero1);
 		singleLinkedList.addByOrder(hero4);
@@ -62,7 +62,7 @@ public class SingleLinkedListDemo {
 		//测试一下看看是否得到了倒数第K个节点
 		HeroNode res = findLastIndexNode(singleLinkedList.getHead(), 3);
 		System.out.println("res=" + res);
-*/
+
 
     }
 
