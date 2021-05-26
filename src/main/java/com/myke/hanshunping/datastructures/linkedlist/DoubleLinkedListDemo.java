@@ -68,6 +68,8 @@ class DoubleLinkedList {
         }
     }
 
+
+
     // 添加一个节点到双向链表的最后.
     public void add(HeroNode2 heroNode) {
 
