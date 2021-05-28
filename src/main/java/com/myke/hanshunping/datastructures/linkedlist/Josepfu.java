@@ -85,7 +85,7 @@ class CircleSingleLinkedList {
             }
             helper = helper.getNext();
         }
-        //小孩报数前，先让 first 和  helper 移动 k - 1次
+        //小孩报数前，先让 first 和  helper 指针同时 移动 k - 1次
         for (int j = 0; j < startNo - 1; j++) {
             first = first.getNext();
             helper = helper.getNext();

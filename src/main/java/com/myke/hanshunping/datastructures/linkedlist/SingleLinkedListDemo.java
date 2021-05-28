@@ -216,7 +216,6 @@ class SingleLinkedList {
                 break; //
             }
 
-            // 开始遍历时,temp 代表头节点，temp.next 代表第一个节点
             if (temp.next.no > heroNode.no) { //位置找到，就在temp的后面插入
                 break;
             } else if (temp.next.no == heroNode.no) {//说明希望添加的heroNode的编号已然存在
@@ -230,10 +229,6 @@ class SingleLinkedList {
         if (flag) { //不能添加，说明编号存在
             System.out.printf("准备插入的英雄的编号 %d 已经存在了, 不能加入\n", heroNode.no);
         } else {
-            // 开始遍历时,temp.next 代表第一个节点,为null,
-            // temp 代表head节点，新插入节点的下一个节点指向temp.next,即null
-            // temp.next : head 节点的下一下节点指向新节点
-
             // 插入到链表中, temp的后面,
             heroNode.next = temp.next;
             temp.next = heroNode;
