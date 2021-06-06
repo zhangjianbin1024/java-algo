@@ -10,7 +10,6 @@ public class Josepfu {
 
         //测试一把小孩出圈是否正确
         circleSingleLinkedList.countBoy(1, 2, 5); // 2->4->1->5->3
-        //String str = "7*2*2-5+1-5+3-3";
     }
 
 }
@@ -38,9 +37,9 @@ class CircleSingleLinkedList {
                 first.setNext(first); // 构成环
                 curBoy = first; // 让curBoy指向第一个小孩
             } else {
-                curBoy.setNext(boy);//
-                boy.setNext(first);//
-                curBoy = boy;
+                curBoy.setNext(boy);//新节点加到 curBoy节点后面
+                boy.setNext(first);//新的节点 boy 指向第一个节点，构成环形
+                curBoy = boy;// 通过 curBoy 记录最新的节点
             }
         }
     }
@@ -85,12 +84,12 @@ class CircleSingleLinkedList {
             }
             helper = helper.getNext();
         }
-        //小孩报数前，先让 first 和  helper 指针同时 移动 k - 1次
+        //小孩报数前，先让 first 和  helper 指针同时 移动 k - 1次,也就是将头指针指向startNo的位置上，并且helper尾节点也随之移动
         for (int j = 0; j < startNo - 1; j++) {
             first = first.getNext();
             helper = helper.getNext();
         }
-        //当小孩报数时，让first 和 helper 指针同时 的移动  m  - 1 次, 然后出圈
+        //当小孩报数时，让first 和 helper 指针同时 的移动  m（countNum）  - 1 次, 然后出圈
         //这里是一个循环操作，知道圈中只有一个节点
         while (true) {
             if (helper == first) { //说明圈中只有一个节点
@@ -105,7 +104,7 @@ class CircleSingleLinkedList {
             System.out.printf("小孩%d出圈\n", first.getNo());
             //这时将first指向的小孩节点出圈
             first = first.getNext();
-            helper.setNext(first); //
+            helper.setNext(first); // helper 的节点不动，而是更改 helper 的下一个节点
 
         }
         System.out.printf("最后留在圈中的小孩编号%d \n", first.getNo());

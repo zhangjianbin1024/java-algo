@@ -30,7 +30,7 @@ public class PolandNotation {
         List<String> suffixExpreesionList = parseSuffixExpreesionList(infixExpressionList);
         System.out.println("后缀表达式对应的List" + suffixExpreesionList); //ArrayList [1,2,3,+,4,*,+,5,–]
 
-        System.out.printf("expression=%d", calculate(suffixExpreesionList)); // ?
+        System.out.printf("expression=%d", calculate(suffixExpreesionList)); // 通过逆波兰表达式，计算 结果
 		
 		
 		
@@ -110,7 +110,8 @@ public class PolandNotation {
         do {
             //如果c是一个非数字，我需要加入到ls集合中
             // ascii码表：http://c.biancheng.net/c/ascii/
-            if ((c = s.charAt(i)) < 48 || (c = s.charAt(i)) > 57) {
+            // 字符 0 对应的十六进制为 48 ，字符 9 对应的十六进制为 57
+            if ((c = s.charAt(i)) < 48 || (c = s.charAt(i)) > 57) {//符合运算符的字符串
                 ls.add("" + c);
                 i++; //i需要后移
             } else { //如果是一个数，需要考虑多位数
@@ -146,7 +147,6 @@ public class PolandNotation {
 		5)将6入栈；
 		6)最后是-运算符，计算出35-6的值，即29，由此得出最终结果
 	 */
-
     public static int calculate(List<String> ls) {
         // 创建给栈, 只需要一个栈即可
         Stack<String> stack = new Stack<String>();
