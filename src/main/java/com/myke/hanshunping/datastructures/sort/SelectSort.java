@@ -37,14 +37,15 @@ public class SelectSort {
     }
 
     //选择排序
+    // 选择排序算法比冒泡算法快，因为选择排序算法，只是在比较大小时，只做交换数据时的记录，并不做真实的数据交换
     public static void selectSort(int[] arr) {
 
         //在推导的过程，我们发现了规律，因此，可以使用for来解决
         //选择排序时间复杂度是 O(n^2)
-        for (int i = 0; i < arr.length - 1; i++) {
-            int minIndex = i;
+        for (int i = 0; i < arr.length - 1; i++) {// -1 是因为经过一次循环后，就得到了一个最小的值，而最小的值放在索引0的位置，所以排除索引0的元素
+            int minIndex = i;//最小值的索引
             int min = arr[i];
-            for (int j = i + 1; j < arr.length; j++) {
+            for (int j = i + 1; j < arr.length; j++) { // 0+1 是因为先假设第 0 个元素为最小的，所以要从第 1个元素开始比较
                 if (min > arr[j]) { // 说明假定的最小值，并不是最小
                     min = arr[j]; // 重置min
                     minIndex = j; // 重置minIndex

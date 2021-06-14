@@ -10,7 +10,7 @@ public class MergetSortTest {
 
     @Test
     public void mergeSort1() {
-        int arr[] = {8, 4, 5, 7, 1, 3, 6, 2}; //
+        int arr[] = {8, 4, 5, 7, 1, 3, 6, 2,0,90}; //
         System.out.println("≈≈–Ú«∞");
         System.out.println(Arrays.toString(arr));
 
