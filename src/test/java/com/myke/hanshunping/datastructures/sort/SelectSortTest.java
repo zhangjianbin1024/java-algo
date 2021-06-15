@@ -10,7 +10,7 @@ public class SelectSortTest {
 
     @Test
     public void selectSort1() {
-        int[] arr = {101, 34, 119, 1, -1, 90, 123};
+        int[] arr = {101, 34, 119, 1};
         System.out.println("排序前");
         System.out.println(Arrays.toString(arr));
 
@@ -20,10 +20,10 @@ public class SelectSortTest {
         //第一轮排序 :   	1, 34, 119, 101
         //算法 先简单--》 做复杂， 就是可以把一个复杂的算法，拆分成简单的问题-》逐步解决
 
-        //第1轮
-        int minIndex = 0;
-        int min = arr[0];
-        for (int j = 0 + 1; j < arr.length; j++) {
+        //第1轮，找到最小值，并将最小值放到索引 0 的位置，索引0位置的值放到其他位置上
+        int minIndex = 0;//最小值的索引
+        int min = arr[0];//先假设第 0 个元素为最小的
+        for (int j = 0 + 1; j < arr.length; j++) { // 0+1 是因为先假设第 0 个元素为最小的，所以要从第 1个元素开始比较
             if (min > arr[j]) { //说明假定的最小值，并不是最小
                 min = arr[j]; //重置min
                 minIndex = j; //重置minIndex
@@ -33,7 +33,9 @@ public class SelectSortTest {
 
         //将最小值，放在arr[0], 即交换
         if (minIndex != 0) {
+            // 通过 minIndex，即最小值的索引位置的值设置为 arr[0] 的值
             arr[minIndex] = arr[0];
+            // arr[0] 的值设置为从上面找到的最小值
             arr[0] = min;
         }
 

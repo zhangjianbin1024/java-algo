@@ -33,6 +33,7 @@
 - Calculator
     - 计算器
 - PolandNotation
+- ReversePolishMultiCalc
 
 ### recursion 递归
 
@@ -42,11 +43,11 @@
 
 ### sort 排序
 
-- BubbleSort
-- SelectSort
-- InsertSort
-- ShellSort
-- QuickSort
-- MergetSort
-- RadixSort
+- BubbleSort 冒泡
+- SelectSort 选择
+- InsertSort 插入
+- ShellSort  希尔
+- QuickSort  快排
+- MergetSort 合并
+- RadixSort  基数
   

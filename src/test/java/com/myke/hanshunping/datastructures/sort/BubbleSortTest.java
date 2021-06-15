@@ -11,13 +11,27 @@ public class BubbleSortTest {
     @Test
     public void bubbleSort0() {
 
-        int arr[] = {3, 9, -1, 10, 20};
+        int arr[] = {3, 9, -1, 10, -2};
         System.out.println("排序前");
         System.out.println(Arrays.toString(arr));
 
         int temp = 0; // 临时变量
+
+        // 第一趟排序，就是将第一大的数排在倒数第一位,即放到最后一位
+        for (int j = 0; j < arr.length - 1; j++) { // -1 是因为经过一趟循环后，就会确定一个最大的元素，最大的元素要放到最后，所以循环到 arr.length - 1 个位置的元素即可
+            // 如果前面的数比后面的数大，则交换
+            if (arr[j] > arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+
+        System.out.println("第一趟排序后的数组");
+        System.out.println(Arrays.toString(arr));
+
         // 第二趟排序，就是将第二大的数排在倒数第二位
-        for (int j = 0; j < arr.length - 1 - 1; j++) {
+        for (int j = 0; j < arr.length - 1 - 1; j++) { // -1 是因为第一趟已经将最大的排在了最后一位，所以第二趟时就不用再排了
             // 如果前面的数比后面的数大，则交换
             if (arr[j] > arr[j + 1]) {
                 temp = arr[j];
@@ -31,7 +45,6 @@ public class BubbleSortTest {
 
 
         // 第三趟排序，就是将第三大的数排在倒数第三位
-
         for (int j = 0; j < arr.length - 1 - 2; j++) {
             // 如果前面的数比后面的数大，则交换
             if (arr[j] > arr[j + 1]) {
@@ -61,7 +74,7 @@ public class BubbleSortTest {
 
     @Test
     public void bubbleSort1() {
-        int arr[] = {3, 9, -1, 10, 20};
+        int arr[] = {3, 9, -1, 10, -2};
         System.out.println("排序前");
         System.out.println(Arrays.toString(arr));
 

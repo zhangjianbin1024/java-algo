@@ -15,6 +15,10 @@ public class ShellSortTest {
         System.out.println("排序前");
         System.out.println(Arrays.toString(arr));
 
+        // 使用逐步推导的方式来编写希尔排序
+        // 希尔排序时， 对有序序列在插入时采用交换法,
+        // 再优化为 对交换式的希尔排序进行优化->移位法
+
         int temp = 0;
         // 希尔排序的第1轮排序
         // 因为第1轮排序，是将10个数据分成了 5组

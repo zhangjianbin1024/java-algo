@@ -19,7 +19,8 @@ public class ArrayStackDemoTest {
         stack.list();
 
         log.info("********************************");
-        stack.pop();
+        int pop = stack.pop();
+        log.info("³öÕ»:[{}]", pop);
 
         stack.list();
     }
