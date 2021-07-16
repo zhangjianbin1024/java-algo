@@ -11,6 +11,7 @@
     <modules>
         <module>java-hanshuping</module>
         <module>java-wangzheng</module>
+        <module>java-tools</module>
     </modules>
 
     <dependencies>
